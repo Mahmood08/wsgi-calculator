@@ -58,7 +58,6 @@ import traceback
 import pprint
 
 
-
 def index():
 
     """
@@ -98,7 +97,8 @@ def index():
 
             <li><a href='/divide/22/11'>/divide/22/11</a></li>
 
-        </ul>        
+        </ul>
+        <p>Thanks for visiting.</p>
     </body>
 
     </html>"""
@@ -110,9 +110,11 @@ def add(*args):
     """ Returns a STRING with the sum of the arguments """
     # TODO: Fill sum with the correct value, based on the
     # args provided.
+    body = [f'<h3>The result of addition is:']
        
-    res_add = sum(map(int, args))    
-    return str(res_add)
+    res_add = sum(map(int, args))
+    body.append(str(res_add))
+    return '\n'.join(body)
 
 
 def subtract(*args):
@@ -120,10 +122,11 @@ def subtract(*args):
     """ Returns a STRING with the diference of the arguments """
 
     # TODO: Fill sum with the correct value, based on the
-    # args provided.  
-        
+    # args provided.
+    body = [f'<h3>The result of subtraction is:']        
     res_subtract = int(args[0]) - int(args[1])
-    return str(res_subtract)
+    body.append(str(res_subtract))
+    return '\n'.join(body)
 
 
 def divide(*args):
@@ -131,12 +134,13 @@ def divide(*args):
     """ Returns a STRING with the dividend of the arguments """
     # TODO: Fill sum with the correct value, based on the
     # args provided.
-            
+    body = [f'<h3>The result of division is:']            
     res_divide = int(args[0]) / int(args[1])
 
     if args == '0':
-        raise ZeroDivisionError        
-    return str(res_divide)
+        raise ZeroDivisionError
+    body.append(str(res_divide))
+    return '\n'.join(body)
 
 
 def multiply(*args):
@@ -144,9 +148,11 @@ def multiply(*args):
     """ Returns a STRING with the factor of the arguments """
     # TODO: Fill sum with the correct value, based on the
     # args provided.
+    body = [f'<h3>The result of multiplication is: ']
            
     res_multiply = int(args[0]) * int(args[1])
-    return str(res_multiply)
+    body.append(str(res_multiply))
+    return '\n'.join(body)
 
 
 def resolve_path(path):
@@ -241,7 +247,6 @@ def application(environ, start_response):
         start_response(status, headers)
         return [body.encode('utf8')]
     
-
 
 if __name__ == '__main__':
 
